@@ -1,12 +1,17 @@
-import React from 'react'
-import Weather from './components/Weather'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home'; 
+import Weather from './components/Weather/Weather'; 
 
-const App = () => {
+function App() {
   return (
-    <div className='app'>
-      <Weather/>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} /> 
+        <Route path="/weather" element={<Weather />} /> 
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

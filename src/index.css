@@ -5,10 +5,18 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", serif;
+  
 
+}
+
+body{
+
+    background-color: rgb(11 19 30);
+  
 }
 .app{
   min-height: 100vh;
   display: grid;
-  background-color: #e2d4ff;
+  background-color: rgb(11 19 30);
+
 }
