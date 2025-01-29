@@ -15,7 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Weather = () => {
 
-    
+  
+
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(null);
 

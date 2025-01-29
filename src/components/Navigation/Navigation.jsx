@@ -7,6 +7,17 @@ const Navigation = () => {
           const handleHomeClick = ()=>{
               navigate('/')
           }
+
+          const handleCitiesClick = ()=>{
+                    navigate('/city')
+                }
+          const handleMapClick = ()=>{
+                  navigate('/map')
+              }
+          const handleSettingsClick = ()=>{
+                navigate('/settings')
+            }
+
   return (
     <nav className={styles.navigation}>
       <ul>
@@ -17,15 +28,15 @@ const Navigation = () => {
           <img src="src/assets/rain.png" alt="Rain" />
           <span>Weather</span>
         </li>
-        <li>
+        <li onClick={handleCitiesClick}>
           <img src="src/assets/list.png" alt="Cities" />
           <span>Cities</span>
         </li>
-        <li>
+        <li onClick={handleMapClick}>
           <img src="src/assets/map.png" alt="Map" />
           <span>Map</span>
         </li>
-        <li>
+        <li onClick={handleSettingsClick}>
           <img src="src/assets/settings.png" alt="Settings" />
           <span>Settings</span>
         </li>
