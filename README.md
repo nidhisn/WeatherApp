@@ -23,7 +23,10 @@ This project utilizes **React.js** and **OpenWeather API** to fetch real-time we
 ### 🎥 Web App Demonstration (GIF)
 Below is a short **GIF** showing how the Weather Web App works:
 
-![Weather Web App Demo](./assets/weather-app-demo.gif)
+<p align="center">
+  <img width="460" height="300" src="https://github.com/nidhisn/WeatherApp/blob/main/src/assets/WetherWeb.gif">
+</p>
+
 ## ⛏️ Tech Stack, APIs, and Other Resources
 
 ### **🛠 Tech Stack**
