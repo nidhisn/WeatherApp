@@ -24,7 +24,7 @@ This project utilizes **React.js** and **OpenWeather API** to fetch real-time we
 Below is a short **GIF** showing how the Weather Web App works:
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/nidhisn/WeatherApp/blob/main/src/assets/WetherWeb.gif">
+  <img width="760" height="400" src="https://github.com/nidhisn/WeatherApp/blob/main/src/assets/WetherWeb.gif">
 </p>
 
 ## ⛏️ Tech Stack, APIs, and Other Resources
