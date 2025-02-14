@@ -1,22 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './Weather.css';
-import search_icon from '../../assets/search.png';
-import clear_icon from '../../assets/clear.png';
-import cloud_icon from '../../assets/cloud.png';
-import drizzle_icon from '../../assets/drizzle.png';
-import rain_icon from '../../assets/rain.png';
-import snow_icon from '../../assets/snow.png';
-import wind_icon from '../../assets/wind.png';
-import uv_icon from '../../assets/uvindex.png';
-import rain_chance from '../../assets/chanceofrain.png';
-import humidity_icon from '../../assets/humidity.png';
-import Navigation from '../Navigation/Navigation';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import "./Weather.css";
+import Navigation from "../Navigation/Navigation";
+import { useNavigate } from "react-router-dom";
+
+import clear_icon from "../../assets/clear.png";
+import cloud_icon from "../../assets/cloud.png";
+import drizzle_icon from "../../assets/drizzle.png";
+import rain_icon from "../../assets/rain.png";
+import snow_icon from "../../assets/snow.png";
 
 const Weather = () => {
-
-  
-
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(null);
 
@@ -43,7 +36,9 @@ const Weather = () => {
       return;
     }
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
+        import.meta.env.VITE_APP_ID
+      }`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -59,8 +54,8 @@ const Weather = () => {
         temperature: Math.round(data.main.temp),
         location: data.name,
         icon: icon,
-        rain: data.rain ? `${data.rain['1h']} mm` : '0 mm',
-        uvIndex: Math.random().toFixed(1) * 10, 
+        rain: data.rain ? `${data.rain["1h"]} mm` : "0 mm",
+        uvIndex: Math.random().toFixed(1) * 10,
       });
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -80,7 +75,7 @@ const Weather = () => {
         <div className="search-bar">
           <input ref={inputRef} type="text" placeholder="Search" />
           <img
-            src={search_icon}
+            src="/search.png"
             alt="Search Icon"
             onClick={() => search(inputRef.current.value)}
           />
@@ -107,7 +102,7 @@ const Weather = () => {
               <div className="today-forcast">
                 <p className="today-forcast-p">TODAY'S FORECAST</p>
                 <div className="today-container">
-                  {['6:00 AM', '9:00 AM', '12:00 PM', '6:00 PM', '9:00 PM'].map(
+                  {["6:00 AM", "9:00 AM", "12:00 PM", "6:00 PM", "9:00 PM"].map(
                     (time, index) => (
                       <div className="one" key={index}>
                         <p>{time}</p>
@@ -123,7 +118,7 @@ const Weather = () => {
                 <p className="weather-data-p">AIR CONDITIONS</p>
                 <div className="weather-data-container">
                   <div className="col">
-                    <img src={humidity_icon} alt="Humidity Icon" />
+                    <img src="/humidity.png" alt="Humidity Icon" />
                     <div>
                       <span>Humidity</span>
                       <p>{weatherData.humidity}%</p>
@@ -131,7 +126,7 @@ const Weather = () => {
                   </div>
 
                   <div className="col">
-                    <img src={wind_icon} alt="Wind Icon" />
+                    <img src="/wind.png" alt="Wind Icon" />
                     <div>
                       <span>Wind</span>
                       <p>{weatherData.windSpeed} Km/hr</p>
@@ -139,7 +134,7 @@ const Weather = () => {
                   </div>
 
                   <div className="col">
-                    <img src={rain_chance} alt="Rain Icon" />
+                    <img src="/chanceofrain.png" alt="Rain Icon" />
                     <div>
                       <span>Chance of rain</span>
                       <p>{weatherData.rain}</p>
@@ -147,7 +142,7 @@ const Weather = () => {
                   </div>
 
                   <div className="col">
-                    <img src={uv_icon} alt="UV Index Icon" />
+                    <img src="/uvindex.png" alt="UV Index Icon" />
                     <div>
                       <span>UV Index</span>
                       <p>{weatherData.uvIndex}</p>
@@ -166,16 +161,24 @@ const Weather = () => {
         <div className="seven-day-forcast">
           <p className="seven-forcast-p">7-DAY FORECAST</p>
           <div className="seven-day-container">
-            {['Today', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(
-              (day, index) => (
-                <div className="day-one" key={index}>
-                  <p>{day}</p>
-                  <img src={weatherData?.icon || clear_icon} alt="Forecast Icon" />
-                  <p>Sunny</p>
-                  <p>36/22</p>
-                </div>
-              )
-            )}
+            {[
+              "Today",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ].map((day, index) => (
+              <div className="day-one" key={index}>
+                <p>{day}</p>
+                <img
+                  src={weatherData?.icon || clear_icon}
+                  alt="Forecast Icon"
+                />
+                <p>Sunny</p>
+                <p>36/22</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

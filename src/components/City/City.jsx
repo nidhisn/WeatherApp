@@ -4,7 +4,6 @@ import Navigation from "../Navigation/Navigation";
 import SearchBar from "../SearchBar/SearchBar";
 import { List } from "react-virtualized";
 
-// Importing Weather Icons
 import clear_icon from "../../assets/clear.png";
 import cloud_icon from "../../assets/cloud.png";
 import drizzle_icon from "../../assets/drizzle.png";
@@ -91,7 +90,7 @@ const City = () => {
         className={styles.cityWeather}
         onClick={() => setSelectedWeather(weather)}
       >
-        <img src={weather.icon} alt="weather-icon" width="50" height="50" />
+        <img src="/weather.png" alt="weather-icon" width="50" height="50" />
         <div className={styles.cityTime}>
           <p>{weather.location}</p>
           <p>{weather.time}</p>

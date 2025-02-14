@@ -1,70 +1,62 @@
 /* Updated styles for vertical navigation */
 .navigation {
-    padding: 8px;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    position: fixed; 
-    top: 20px;
-    left: 20px;
-    width: 100px; 
-    height: 100vh; 
-    background-color: rgb(32, 43, 59);
-    border-radius: 20px; 
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
-    z-index: 10;
-  }
-  
-  
-  .navigation ul {
-    display: flex;
-    flex-direction: column; 
-    list-style: none;
-    font-size: 0.8rem;
-    font-weight: 100;
-    color: white;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-  
-  
-  .navigation ul li {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    padding: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  
-  .navigation ul li:first-child {
-    margin-bottom: 30px; 
-  }
-  
-  .navigation ul li:hover {
-    
-    transform: scale(1.05); 
-  }
-  
-  
-  .navigation img {
-    max-width: 40px; 
-    margin-bottom: 8px; 
-    transition: transform 0.3s ease; 
-  }
-  
-  
-  .navigation ul li:hover img {
-    transform: rotate(360deg); 
-  }
-  
-  
-  .navigation ul li span {
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    text-align: center;
-  }
-  
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 100vh;
+  background-color: rgb(32, 43, 59);
+  border-radius: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.navigation ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 0.8rem;
+  font-weight: 100;
+  color: white;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navigation ul li:first-child {
+  margin-bottom: 30px;
+}
+
+.navigation ul li:hover {
+  transform: scale(1.05);
+}
+
+.navigation img {
+  max-width: 40px;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.navigation ul li:hover img {
+  transform: rotate(360deg);
+}
+
+.navigation ul li span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
