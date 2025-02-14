@@ -20,12 +20,11 @@ This project utilizes **React.js** and **OpenWeather API** to fetch real-time we
 
 ---
 
-### 🎥 Web App Demonstration (GIF)
-Below is a short **GIF** showing how the Weather Web App works:
-
-<p align="center">
-  <img width="760" height="400" src="https://github.com/nidhisn/WeatherApp/blob/main/src/assets/WetherWeb.gif">
-</p>
+## 🌍 Live Demo  
+Check out the deployed site here:  
+🔗 [Drizzle Weather App](https://drizzle-weather-app.netlify.app)
+ 
+---
 
 ## ⛏️ Tech Stack, APIs, and Other Resources
 
