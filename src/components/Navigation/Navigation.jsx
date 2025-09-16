@@ -14,6 +14,10 @@ const Navigation = () => {
   const handleMapClick = () => {
     navigate("/map");
   };
+  const handleWeatherClick = () => {
+    navigate("/weather");
+  };
+
   const handleSettingsClick = () => {
     navigate("/settings");
   };
@@ -25,7 +29,7 @@ const Navigation = () => {
           <img src="/cloudd.png" alt="Cloud" />
           <span>Home</span>
         </li>
-        <li>
+        <li onClick={handleWeatherClick}>
           <img src="/rain.png" alt="Rain" />
           <span>Weather</span>
         </li>
