@@ -21,8 +21,9 @@ const Navigation = () => {
   return (
     <nav className={styles.navigation}>
       <ul>
-        <li>
-          <img src="/cloudd.png" alt="Cloud" onClick={handleHomeClick} />
+        <li onClick={handleHomeClick}>
+          <img src="/cloudd.png" alt="Cloud" />
+          <span>Home</span>
         </li>
         <li>
           <img src="/rain.png" alt="Rain" />

@@ -84,6 +84,13 @@ const Map = () => {
       <div className={styles.left_section}>
         <SearchBar onSearch={search} />
       </div>
+      <div className={styles.map_container}>
+        <div className={styles.map_placeholder}>
+          <h3>Map View</h3>
+          <p>Interactive map will be displayed here</p>
+          <p>Search for cities to see their locations</p>
+        </div>
+      </div>
     </div>
   );
 };

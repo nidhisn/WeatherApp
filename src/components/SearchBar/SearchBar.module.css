@@ -25,3 +25,59 @@
   background: #ebfffc;
   cursor: pointer;
 }
+
+/* Responsive Design */
+
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  .searchBar {
+    margin-right: 0;
+  }
+
+  .searchBar input {
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .searchBar img {
+    width: 45px;
+    padding: 12px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 768px) {
+  .searchBar {
+    margin-right: 0;
+    gap: 10px;
+  }
+
+  .searchBar input {
+    height: 45px;
+    font-size: 16px;
+    padding-left: 20px;
+  }
+
+  .searchBar img {
+    width: 45px;
+    padding: 12px;
+  }
+}
+
+/* For very small screens */
+@media only screen and (max-width: 480px) {
+  .searchBar {
+    gap: 8px;
+  }
+
+  .searchBar input {
+    height: 40px;
+    font-size: 14px;
+    padding-left: 15px;
+  }
+
+  .searchBar img {
+    width: 40px;
+    padding: 10px;
+  }
+}

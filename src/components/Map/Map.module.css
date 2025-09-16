@@ -13,3 +13,114 @@
   margin-left: 130px;
   padding-right: 0px;
 }
+
+.map_container {
+  width: 40%;
+  height: 100vh;
+  background-color: rgb(32, 43, 59);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.map_placeholder {
+  text-align: center;
+  color: white;
+  padding: 40px;
+}
+
+.map_placeholder h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: rgb(0, 149, 255);
+}
+
+.map_placeholder p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: rgb(147, 153, 162);
+}
+
+/* Responsive Design */
+
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  .map {
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 768px) {
+  .map {
+    padding: 15px;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 25px;
+    order: 1;
+  }
+
+  .map_container {
+    width: 100%;
+    height: 300px;
+    margin-top: 0;
+    order: 2;
+  }
+
+  .map_placeholder {
+    padding: 20px;
+  }
+
+  .map_placeholder h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .map_placeholder p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* For very small screens */
+@media only screen and (max-width: 480px) {
+  .map {
+    padding: 10px;
+  }
+
+  .map_container {
+    height: 250px;
+  }
+
+  .map_placeholder {
+    padding: 15px;
+  }
+
+  .map_placeholder h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .map_placeholder p {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+}

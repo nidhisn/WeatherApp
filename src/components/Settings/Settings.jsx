@@ -13,8 +13,10 @@ const Settings = () => {
   const [precipitation, setPrecipitation] = useState("Milimeters");
   const [distance, setDistance] = useState("Kilimeters");
 
-  // State for Switch components
-  const [checked, setChecked] = useState(false);
+  // Separate state for each Switch
+  const [notifications, setNotifications] = useState(false);
+  const [timeFormat, setTimeFormat] = useState(false);
+  const [location, setLocation] = useState(false);
 
   // Handling ToggleButtonGroup value change
   const handleAlignment = (event, newAlignment) => {
@@ -318,9 +320,8 @@ const Settings = () => {
           <div className={styles.notification}>
             <p>Be aware of the weather</p>
             <Switch
-              checked={checked}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "controlled" }}
+              checked={notifications}
+              onChange={(e) => setNotifications(e.target.checked)}
             />
           </div>
         </div>
@@ -330,9 +331,8 @@ const Settings = () => {
           <div className={styles.time}>
             <p>12-Hour Time</p>
             <Switch
-              checked={checked}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "controlled" }}
+              checked={timeFormat}
+              onChange={(e) => setTimeFormat(e.target.checked)}
             />
           </div>
 
@@ -340,9 +340,8 @@ const Settings = () => {
           <div className={styles.location}>
             <p>Get weather of your location</p>
             <Switch
-              checked={checked}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "controlled" }}
+              checked={location}
+              onChange={(e) => setLocation(e.target.checked)}
             />
           </div>
         </div>

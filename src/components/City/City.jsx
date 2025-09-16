@@ -107,8 +107,16 @@ const City = () => {
         <SearchBar onSearch={search} />
         <div className={styles.recyclerView}>
           <List
-            width={850}
-            height={600}
+            width={
+              typeof window !== "undefined" && window.innerWidth > 768
+                ? 850
+                : 350
+            }
+            height={
+              typeof window !== "undefined" && window.innerWidth > 768
+                ? 600
+                : 300
+            }
             rowCount={weatherList.length}
             rowHeight={100}
             rowRenderer={rowRenderer}

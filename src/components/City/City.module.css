@@ -148,3 +148,200 @@
   background-color: rgb(53 69 94);
   margin: 0 10px;
 }
+
+/* Responsive Design */
+
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  .city {
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .right_section {
+    width: 100%;
+    margin-top: 0;
+    height: auto;
+    padding: 20px;
+  }
+
+  .recyclerView {
+    margin-top: 15px;
+  }
+
+  .cityWeather {
+    height: 70px;
+    padding: 8px;
+  }
+
+  .weather_icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .temperature {
+    font-size: 40px;
+  }
+
+  .today_container {
+    padding: 8px;
+    gap: 15px;
+  }
+
+  .one img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .seven_day_container {
+    gap: 8px;
+  }
+
+  .seven_day_container img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 768px) {
+  .city {
+    padding: 15px;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 25px;
+    order: 1;
+  }
+
+  .right_section {
+    width: 100%;
+    margin-top: 0;
+    height: auto;
+    padding: 20px;
+    order: 2;
+  }
+
+  .recyclerView {
+    margin-top: 15px;
+  }
+
+  .cityWeather {
+    height: 60px;
+    padding: 6px;
+    margin-bottom: 15px;
+  }
+
+  .cityWeather img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .city_temp_icon_container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weather_icon {
+    width: 70px;
+    height: 70px;
+    margin: 15px 0;
+  }
+
+  .temperature {
+    font-size: 35px;
+  }
+
+  .today_container {
+    padding: 5px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .one {
+    min-width: 70px;
+  }
+
+  .one img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .vertical_divider {
+    display: none; /* Hide vertical dividers on mobile */
+  }
+
+  .seven_day_container {
+    gap: 6px;
+  }
+
+  .seven_day_container img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .day_one {
+    gap: 10px;
+  }
+}
+
+/* For very small screens */
+@media only screen and (max-width: 480px) {
+  .city {
+    padding: 10px;
+  }
+
+  .cityWeather {
+    height: 50px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .cityWeather img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .weather_icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .temperature {
+    font-size: 30px;
+  }
+
+  .today_container {
+    gap: 8px;
+    padding: 2px;
+  }
+
+  .one {
+    min-width: 60px;
+  }
+
+  .one img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .seven_day_container img {
+    width: 18px;
+    height: 18px;
+  }
+}

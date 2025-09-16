@@ -195,3 +195,140 @@ button:hover {
   background-color: rgb(0, 128, 255);
   transform: scale(1.05);
 }
+
+/* Responsive Design */
+
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  .settings {
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .right_section {
+    width: 100%;
+    margin-top: 0;
+    height: auto;
+    padding: 20px;
+  }
+
+  .time,
+  .location,
+  .notification {
+    gap: 100px; /* Reduce gap for tablets */
+  }
+
+  .toggle_button_group {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 768px) {
+  .settings {
+    padding: 15px;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .left_section {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 25px;
+    order: 1;
+  }
+
+  .right_section {
+    width: 100%;
+    margin-top: 0;
+    height: auto;
+    padding: 20px;
+    order: 2;
+  }
+
+  .units_container {
+    gap: 20px;
+  }
+
+  .settings_data {
+    gap: 8px;
+  }
+
+  .settings_data p {
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  .time,
+  .location,
+  .notification {
+    gap: 50px; /* Further reduce gap for mobile */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle_button_group {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .sign_up h5 {
+    font-size: 1.5rem;
+  }
+
+  .sign_up p {
+    font-size: 1rem;
+  }
+
+  .sign_up button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.1rem;
+  }
+}
+
+/* For very small screens */
+@media only screen and (max-width: 480px) {
+  .settings {
+    padding: 10px;
+  }
+
+  .settings_data p {
+    font-size: 0.9rem;
+  }
+
+  .time,
+  .location,
+  .notification {
+    gap: 30px;
+  }
+
+  .toggle_button_group {
+    gap: 3px;
+  }
+
+  .sign_up h5 {
+    font-size: 1.3rem;
+  }
+
+  .sign_up p {
+    font-size: 0.9rem;
+  }
+
+  .sign_up button {
+    font-size: 1rem;
+  }
+}
