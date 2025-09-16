@@ -196,6 +196,45 @@ button:hover {
   transform: scale(1.05);
 }
 
+.current_settings {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(32, 43, 59, 0.3);
+  border-radius: 15px;
+  border: 1px solid rgb(53, 69, 94);
+}
+
+.current_settings h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(0, 149, 255);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.settings_display {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings_display p {
+  font-size: 0.9rem;
+  color: rgb(147, 153, 162);
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(53, 69, 94, 0.3);
+}
+
+.settings_display p:last-child {
+  border-bottom: none;
+}
+
+.settings_display strong {
+  color: white;
+  font-weight: 600;
+}
+
 /* Responsive Design */
 
 /* For tablets */
@@ -298,6 +337,20 @@ button:hover {
     padding: 12px 0;
     font-size: 1.1rem;
   }
+
+  .current_settings {
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  .current_settings h5 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .settings_display p {
+    font-size: 0.8rem;
+  }
 }
 
 /* For very small screens */
@@ -330,5 +383,19 @@ button:hover {
 
   .sign_up button {
     font-size: 1rem;
+  }
+
+  .current_settings {
+    margin-top: 15px;
+    padding: 12px;
+  }
+
+  .current_settings h5 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .settings_display p {
+    font-size: 0.75rem;
   }
 }

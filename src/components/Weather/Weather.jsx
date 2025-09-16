@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Weather.css";
 import Navigation from "../Navigation/Navigation";
 import { useNavigate } from "react-router-dom";
+import { useSettings } from "../../contexts/SettingsContext";
 
 import clear_icon from "../../assets/clear.png";
 import cloud_icon from "../../assets/cloud.png";
@@ -12,6 +13,17 @@ import snow_icon from "../../assets/snow.png";
 const Weather = () => {
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(null);
+  const {
+    convertTemperature,
+    getTemperatureUnit,
+    convertWindSpeed,
+    getWindSpeedUnit,
+    convertPressure,
+    getPressureUnit,
+    convertPrecipitation,
+    getPrecipitationUnit,
+    formatTime,
+  } = useSettings();
 
   const allIcons = {
     "01d": clear_icon,
@@ -88,7 +100,10 @@ const Weather = () => {
                 <div className="city-temp">
                   <p className="location">{weatherData.location}</p>
                   <p className="rain">Chance of rain: {weatherData.rain}</p>
-                  <p className="temperature">{weatherData.temperature}°C</p>
+                  <p className="temperature">
+                    {convertTemperature(weatherData.temperature)}
+                    {getTemperatureUnit()}
+                  </p>
                 </div>
                 <div className="city-icon">
                   <img
@@ -107,7 +122,10 @@ const Weather = () => {
                       <div className="one" key={index}>
                         <p>{time}</p>
                         <img src={weatherData.icon} alt="Forecast Icon" />
-                        <p>{weatherData.temperature - index}°C</p>
+                        <p>
+                          {convertTemperature(weatherData.temperature - index)}
+                          {getTemperatureUnit()}
+                        </p>
                       </div>
                     )
                   )}
@@ -129,7 +147,10 @@ const Weather = () => {
                     <img src="/wind.png" alt="Wind Icon" />
                     <div>
                       <span>Wind</span>
-                      <p>{weatherData.windSpeed} Km/hr</p>
+                      <p>
+                        {convertWindSpeed(weatherData.windSpeed)}{" "}
+                        {getWindSpeedUnit()}
+                      </p>
                     </div>
                   </div>
 
@@ -137,7 +158,10 @@ const Weather = () => {
                     <img src="/chanceofrain.png" alt="Rain Icon" />
                     <div>
                       <span>Chance of rain</span>
-                      <p>{weatherData.rain}</p>
+                      <p>
+                        {convertPrecipitation(parseFloat(weatherData.rain))}{" "}
+                        {getPrecipitationUnit()}
+                      </p>
                     </div>
                   </div>
 
@@ -176,7 +200,10 @@ const Weather = () => {
                   alt="Forecast Icon"
                 />
                 <p>Sunny</p>
-                <p>36/22</p>
+                <p>
+                  {convertTemperature(36)}/{convertTemperature(22)}
+                  {getTemperatureUnit()}
+                </p>
               </div>
             ))}
           </div>

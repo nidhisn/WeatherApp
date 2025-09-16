@@ -1,45 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Settings.module.css";
 import Navigation from "../Navigation/Navigation";
 import Switch from "@mui/material/Switch";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useSettings } from "../../contexts/SettingsContext";
 
 const Settings = () => {
-  // State to handle ToggleButtonGroup values
-  const [alignment, setAlignment] = useState("Celsius");
-  const [windSpeed, setWindSpeed] = useState("km/h");
-  const [pressure, setPressure] = useState("hPa");
-  const [precipitation, setPrecipitation] = useState("Milimeters");
-  const [distance, setDistance] = useState("Kilimeters");
-
-  // Separate state for each Switch
-  const [notifications, setNotifications] = useState(false);
-  const [timeFormat, setTimeFormat] = useState(false);
-  const [location, setLocation] = useState(false);
+  const { settings, updateSetting } = useSettings();
 
   // Handling ToggleButtonGroup value change
   const handleAlignment = (event, newAlignment) => {
     if (newAlignment !== null) {
-      setAlignment(newAlignment);
+      updateSetting("temperature", newAlignment);
     }
   };
 
   // Handling Switch state change
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
+  const handleNotificationChange = (event) => {
+    updateSetting("notifications", event.target.checked);
+  };
+
+  const handleTimeFormatChange = (event) => {
+    updateSetting("timeFormat", event.target.checked);
+  };
+
+  const handleLocationChange = (event) => {
+    updateSetting("location", event.target.checked);
   };
 
   return (
     <div className={styles.settings}>
       <Navigation />
       <div className={styles.left_section}>
-        <div classNames={styles.units_container}>
+        <div className={styles.units_container}>
           <div className={styles.settings_data}>
             <p>TEMPERATURE</p>
             <ToggleButtonGroup
               className={styles.toggle_button_group}
-              value={alignment}
+              value={settings.temperature}
               exclusive
               onChange={handleAlignment}
               aria-label="text alignment"
@@ -56,6 +55,8 @@ const Settings = () => {
                   borderRadius: "12px",
                   border: "1px solid rgb(53, 69, 94)",
                 }}
+                value="Celsius"
+                aria-label="Celsius"
               >
                 °C
               </ToggleButton>
@@ -83,9 +84,9 @@ const Settings = () => {
             <p>WIND SPEED</p>
             <ToggleButtonGroup
               className={styles.toggle_button_group}
-              value={windSpeed}
+              value={settings.windSpeed}
               exclusive
-              onChange={(e, newValue) => setWindSpeed(newValue)}
+              onChange={(e, newValue) => updateSetting("windSpeed", newValue)}
               aria-label="wind speed"
             >
               <ToggleButton
@@ -146,9 +147,9 @@ const Settings = () => {
             <p>PRESSURE</p>
             <ToggleButtonGroup
               className={styles.toggle_button_group}
-              value={pressure}
+              value={settings.pressure}
               exclusive
-              onChange={(e, newValue) => setPressure(newValue)}
+              onChange={(e, newValue) => updateSetting("pressure", newValue)}
               aria-label="pressure"
             >
               <ToggleButton
@@ -226,9 +227,11 @@ const Settings = () => {
             <p>PRECIPITATION</p>
             <ToggleButtonGroup
               className={styles.toggle_button_group}
-              value={precipitation}
+              value={settings.precipitation}
               exclusive
-              onChange={(e, newValue) => setPrecipitation(newValue)}
+              onChange={(e, newValue) =>
+                updateSetting("precipitation", newValue)
+              }
               aria-label="precipitation"
             >
               <ToggleButton
@@ -272,9 +275,9 @@ const Settings = () => {
             <p>DISTANCE</p>
             <ToggleButtonGroup
               className={styles.toggle_button_group}
-              value={distance}
+              value={settings.distance}
               exclusive
-              onChange={(e, newValue) => setDistance(newValue)}
+              onChange={(e, newValue) => updateSetting("distance", newValue)}
               aria-label="distance"
             >
               <ToggleButton
@@ -320,8 +323,8 @@ const Settings = () => {
           <div className={styles.notification}>
             <p>Be aware of the weather</p>
             <Switch
-              checked={notifications}
-              onChange={(e) => setNotifications(e.target.checked)}
+              checked={settings.notifications}
+              onChange={handleNotificationChange}
             />
           </div>
         </div>
@@ -331,8 +334,8 @@ const Settings = () => {
           <div className={styles.time}>
             <p>12-Hour Time</p>
             <Switch
-              checked={timeFormat}
-              onChange={(e) => setTimeFormat(e.target.checked)}
+              checked={settings.timeFormat}
+              onChange={handleTimeFormatChange}
             />
           </div>
 
@@ -340,8 +343,8 @@ const Settings = () => {
           <div className={styles.location}>
             <p>Get weather of your location</p>
             <Switch
-              checked={location}
-              onChange={(e) => setLocation(e.target.checked)}
+              checked={settings.location}
+              onChange={handleLocationChange}
             />
           </div>
         </div>

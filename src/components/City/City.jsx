@@ -3,6 +3,7 @@ import styles from "./City.module.css";
 import Navigation from "../Navigation/Navigation";
 import SearchBar from "../SearchBar/SearchBar";
 import { List } from "react-virtualized";
+import { useSettings } from "../../contexts/SettingsContext";
 
 import clear_icon from "../../assets/clear.png";
 import cloud_icon from "../../assets/cloud.png";
@@ -30,6 +31,15 @@ const allIcons = {
 const City = () => {
   const [weatherList, setWeatherList] = useState([]); // Stores multiple city weather data
   const [selectedWeather, setSelectedWeather] = useState(null); // Selected city for right section
+  const {
+    convertTemperature,
+    getTemperatureUnit,
+    convertWindSpeed,
+    getWindSpeedUnit,
+    convertPrecipitation,
+    getPrecipitationUnit,
+    formatTime,
+  } = useSettings();
 
   const search = async (city) => {
     if (!city) {
@@ -95,7 +105,10 @@ const City = () => {
           <p>{weather.location}</p>
           <p>{weather.time}</p>
         </div>
-        <p>{weather.temperature}°C</p>
+        <p>
+          {convertTemperature(weather.temperature)}
+          {getTemperatureUnit()}
+        </p>
       </div>
     );
   };
@@ -137,7 +150,8 @@ const City = () => {
                     Chance of rain: {selectedWeather.rain}
                   </p>
                   <p className={styles.temperature}>
-                    {selectedWeather.temperature}°C
+                    {convertTemperature(selectedWeather.temperature)}
+                    {getTemperatureUnit()}
                   </p>
                 </div>
                 <div className={styles.city_icon}>
@@ -160,7 +174,12 @@ const City = () => {
                     <div className={styles.one}>
                       <p className={styles.clr}>{time}</p>
                       <img src={selectedWeather.icon} alt="Forecast Icon" />
-                      <p>{selectedWeather.temperature - index}°C</p>
+                      <p>
+                        {convertTemperature(
+                          selectedWeather.temperature - index
+                        )}
+                        {getTemperatureUnit()}
+                      </p>
                     </div>
                     {/* Add Vertical Divider except for the last item */}
                     {index !== arr.length - 1 && (
@@ -183,7 +202,10 @@ const City = () => {
                       <p className={styles.clr}>{day}</p>
                       <img src={selectedWeather.icon} alt="Forecast Icon" />
                       <p>Sunny</p>
-                      <p>36/22</p>
+                      <p>
+                        {convertTemperature(36)}/{convertTemperature(22)}
+                        {getTemperatureUnit()}
+                      </p>
                     </div>
 
                     {index !== arr.length - 1 && (
