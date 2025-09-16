@@ -23,12 +23,45 @@ export const SettingsProvider = ({ children }) => {
     location: false,
   });
 
+  // Search history state
+  const [searchHistory, setSearchHistory] = useState([]);
+
   // Update a specific setting
   const updateSetting = (key, value) => {
     setSettings((prev) => ({
       ...prev,
       [key]: value,
     }));
+  };
+
+  // Add a new search to history
+  const addToSearchHistory = (weatherData) => {
+    setSearchHistory((prev) => {
+      // Check if city already exists in history
+      const existingIndex = prev.findIndex(
+        (item) => item.location === weatherData.location
+      );
+
+      if (existingIndex !== -1) {
+        // If city exists, move it to the top
+        const updatedHistory = [...prev];
+        const [existingItem] = updatedHistory.splice(existingIndex, 1);
+        return [existingItem, ...updatedHistory];
+      } else {
+        // If new city, add to the top
+        return [weatherData, ...prev];
+      }
+    });
+  };
+
+  // Clear search history
+  const clearSearchHistory = () => {
+    setSearchHistory([]);
+  };
+
+  // Remove a specific city from history
+  const removeFromSearchHistory = (cityId) => {
+    setSearchHistory((prev) => prev.filter((item) => item.id !== cityId));
   };
 
   // Temperature conversion functions
@@ -140,6 +173,10 @@ export const SettingsProvider = ({ children }) => {
   const value = {
     settings,
     updateSetting,
+    searchHistory,
+    addToSearchHistory,
+    clearSearchHistory,
+    removeFromSearchHistory,
     convertTemperature,
     getTemperatureUnit,
     convertWindSpeed,

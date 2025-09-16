@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./City.module.css";
 import Navigation from "../Navigation/Navigation";
 import SearchBar from "../SearchBar/SearchBar";
-import { List } from "react-virtualized";
 import { useSettings } from "../../contexts/SettingsContext";
 
 import clear_icon from "../../assets/clear.png";
@@ -29,9 +28,11 @@ const allIcons = {
 };
 
 const City = () => {
-  const [weatherList, setWeatherList] = useState([]); // Stores multiple city weather data
   const [selectedWeather, setSelectedWeather] = useState(null); // Selected city for right section
   const {
+    searchHistory,
+    addToSearchHistory,
+    removeFromSearchHistory,
     convertTemperature,
     getTemperatureUnit,
     convertWindSpeed,
@@ -71,46 +72,11 @@ const City = () => {
         time: new Date().toLocaleTimeString(),
       };
 
-      // Updating list with the latest search
-      setWeatherList((prevList) => [newWeatherData, ...prevList]);
+      // Add to global search history
+      addToSearchHistory(newWeatherData);
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }
-  };
-
-  // Function to render each row in RecyclerView (left section)
-  const rowRenderer = ({ key, index, style }) => {
-    const weather = weatherList[index];
-
-    return (
-      <div
-        key={key}
-        style={{
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "rgb(32, 43, 59)",
-          color: "white",
-          borderRadius: "10px",
-          padding: "10px",
-          height: "80px",
-          marginBottom: "20px",
-        }}
-        className={styles.cityWeather}
-        onClick={() => setSelectedWeather(weather)}
-      >
-        <img src="/weather.png" alt="weather-icon" width="50" height="50" />
-        <div className={styles.cityTime}>
-          <p>{weather.location}</p>
-          <p>{weather.time}</p>
-        </div>
-        <p>
-          {convertTemperature(weather.temperature)}
-          {getTemperatureUnit()}
-        </p>
-      </div>
-    );
   };
 
   return (
@@ -119,22 +85,64 @@ const City = () => {
       <div className={styles.left_section}>
         <SearchBar onSearch={search} />
         <div className={styles.recyclerView}>
-          <List
-            width={
-              typeof window !== "undefined" && window.innerWidth > 768
-                ? 850
-                : 350
-            }
-            height={
-              typeof window !== "undefined" && window.innerWidth > 768
-                ? 600
-                : 300
-            }
-            rowCount={weatherList.length}
-            rowHeight={100}
-            rowRenderer={rowRenderer}
-            overscanRowCount={5}
-          />
+          {searchHistory.length > 0 ? (
+            <div className={styles.city_list_container}>
+              {searchHistory.map((weather, index) => {
+                const isSelected = selectedWeather?.id === weather.id;
+
+                const handleDelete = (e) => {
+                  e.stopPropagation();
+                  removeFromSearchHistory(weather.id);
+                };
+
+                return (
+                  <div
+                    key={weather.id}
+                    className={`${styles.cityWeather} ${
+                      isSelected ? styles.selected : ""
+                    }`}
+                    onClick={() => setSelectedWeather(weather)}
+                  >
+                    <div className={styles.weather_icon_container}>
+                      <img
+                        src={weather.icon}
+                        alt="weather-icon"
+                        className={styles.weather_icon}
+                      />
+                    </div>
+                    <div className={styles.city_info}>
+                      <div className={styles.city_name_row}>
+                        <span className={styles.city_name}>
+                          {weather.location}
+                        </span>
+                        {isSelected && (
+                          <span className={styles.location_indicator}>✈</span>
+                        )}
+                      </div>
+                      <span className={styles.city_time}>{weather.time}</span>
+                    </div>
+                    <div className={styles.temperature_display}>
+                      <span className={styles.temperature}>
+                        {convertTemperature(weather.temperature)}°
+                      </span>
+                      <button
+                        className={styles.delete_btn}
+                        onClick={handleDelete}
+                        title="Delete this city"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className={styles.no_history}>
+              <h3>No Search History</h3>
+              <p>Search for cities to see them here</p>
+            </div>
+          )}
         </div>
       </div>
 
